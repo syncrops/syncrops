@@ -52,11 +52,11 @@ local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
 local Humanoid = Character:WaitForChild("Humanoid")
 
 -- ============================================================================
--- RAYFIELD UI SETUP
+-- Kay UI SETUP
 -- ============================================================================
-local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
+local Kay = loadstring(game:HttpGet("https://raw.githubusercontent.com/syncrops/syncrops/main/css.lua"))()
 
-local Window = Rayfield:CreateWindow({
+local Window = Kay:CreateWindow({
     Name = "SYNCROPS FISH IT - PREMIUM",
     LoadingTitle = "SYNCROPS FISH IT - LOADING ALL SYSTEMS",
     LoadingSubtitle = "BY KAY",
@@ -539,7 +539,7 @@ local function HealthCheckRemotes()
     end
     
     if #missingRemotes > 0 then
-        Rayfield:Notify({
+        Kay:Notify({
             Title = "Remote Warning",
             Content = "Some remotes missing: " .. table.concat(missingRemotes, ", "),
             Duration = 5
@@ -616,7 +616,7 @@ local function AutoSellWorker()
                     local success = SellAllFish()
                     
                     if success then
-                        Rayfield:Notify({
+                        Kay:Notify({
                             Title = "Auto Sell",
                             Content = "Sold all fish! Inventory was: " .. currentCount .. "/4500",
                             Duration = 3
@@ -763,7 +763,7 @@ function AutoFishingV1()
                 if consecutiveErrors >= maxConsecutiveErrors then
                     warn("[AutoFishingV1] Too many errors, stopping...")
                     Config.AutoFishingV1 = false
-                    Rayfield:Notify({
+                    Kay:Notify({
                         Title = "AutoFishing V1",
                         Content = "Stopped due to errors. Please restart manually.",
                         Duration = 5
@@ -954,7 +954,7 @@ function AutoFishingV3()
                 if consecutiveErrors >= maxConsecutiveErrors then
                     warn("[AutoFishingV3] Too many errors, stopping...")
                     Config.AutoFishingV3 = false
-                    Rayfield:Notify({
+                    Kay:Notify({
                         Title = "AutoFishing V3",
                         Content = "Stopped due to errors. Please restart manually.",
                         Duration = 5
@@ -1007,7 +1007,7 @@ function AutoFishingNewMethod()
             warn("[AutoFishingNewMethod] Failed to equip rod, stopping...")
             Config.AutoFishingNewMethod = false
             RuntimeState.IsFishingNewMethod = false
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "New Method",
                 Content = "Failed to equip rod. Please try again.",
                 Duration = 5
@@ -1099,7 +1099,7 @@ function AutoFishingNewMethod()
                 if consecutiveErrors >= maxConsecutiveErrors then
                     warn("[AutoFishingNewMethod] Too many errors, stopping...")
                     Config.AutoFishingNewMethod = false
-                    Rayfield:Notify({
+                    Kay:Notify({
                         Title = "New Method",
                         Content = "Stopped due to errors.",
                         Duration = 5
@@ -2308,7 +2308,7 @@ task.spawn(function()
             Config.AutoFishingV3 = false
             QuestState.Active = false
             
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "✅ Quest Complete",
                 Content = QuestState.CurrentQuest .. " finished!",
                 Duration = 5
@@ -2444,7 +2444,7 @@ local function CreateUI()
                 Config.AutoFishingV3 = false
                 Config.AutoFishingNewMethod = false
                 AutoFishingV1()
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "Auto Fishing V1",
                     Content = "Fast speed mode activated!",
                     Duration = 3
@@ -2463,7 +2463,7 @@ local function CreateUI()
                 Config.AutoFishingV3 = false
                 Config.AutoFishingNewMethod = false
                 AutoFishingV2()
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "Auto Fishing V2",
                     Content = "Using game auto fishing!",
                     Duration = 3
@@ -2482,7 +2482,7 @@ local function CreateUI()
                 Config.AutoFishingV2 = false
                 Config.AutoFishingNewMethod = false
                 AutoFishingV3()
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "Auto Fishing V3",
                     Content = "Stable mode (1.5s delay) activated!",
                     Duration = 3
@@ -2501,7 +2501,7 @@ local function CreateUI()
                 Config.AutoFishingV2 = false
                 Config.AutoFishingV3 = false
                 AutoFishingNewMethod()
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "New Method",
                     Content = "Equip rod once mode activated!",
                     Duration = 3
@@ -2526,7 +2526,7 @@ local function CreateUI()
         Name = "Refresh Inventory Count",
         Callback = function()
             local count = RefreshInventoryCount()
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Inventory",
                 Content = "Current: " .. count .. "/4500",
                 Duration = 3
@@ -2540,13 +2540,13 @@ local function CreateUI()
         Callback = function()
             local success = SellAllFish()
             if success then
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "Sell Success",
                     Content = "All fish sold!",
                     Duration = 3
                 })
             else
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "Sell Failed",
                     Content = "Could not sell fish",
                     Duration = 3
@@ -2562,7 +2562,7 @@ local function CreateUI()
             Config.AutoSell = Value
             if Value then
                 AutoSellWorker()
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "Auto Sell",
                     Content = "Threshold: " .. Config.SellThreshold .. " fish",
                     Duration = 3
@@ -2579,13 +2579,13 @@ local function CreateUI()
             local number = tonumber(Text)
             if number and number >= 1 and number <= 4500 then
                 Config.SellThreshold = number
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "Threshold Updated",
                     Content = "New threshold: " .. number .. " fish",
                     Duration = 3
                 })
             else
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "Invalid Input",
                     Content = "Enter number between 1-4500",
                     Duration = 3
@@ -2601,7 +2601,7 @@ local function CreateUI()
         CurrentValue = Config.PerfectCatch,
         Callback = function(Value)
             TogglePerfectCatch(Value)
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Perfect Catch",
                 Content = Value and "Enabled!" or "Disabled!",
                 Duration = 2
@@ -2618,7 +2618,7 @@ local function CreateUI()
                     Remotes.Radar:InvokeServer(Value)
                 end
             end)
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Fishing Radar",
                 Content = Value and "Enabled!" or "Disabled!",
                 Duration = 2
@@ -2644,7 +2644,7 @@ local function CreateUI()
                     end
                 end
             end)
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Diving Gear",
                 Content = Value and "Activated!" or "Deactivated!",
                 Duration = 2
@@ -2670,7 +2670,7 @@ local function CreateUI()
             Config.AutoJump = Value
             if Value then
                 AutoJump()
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "Auto Jump",
                     Content = "Started with " .. Config.AutoJumpDelay .. "s delay",
                     Duration = 2
@@ -2702,7 +2702,7 @@ local function CreateUI()
             Config.WalkOnWater = Value
             if Value then
                 WalkOnWater()
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "Walk on Water",
                     Content = "Smooth mode enabled!",
                     Duration = 2
@@ -2739,7 +2739,7 @@ local function CreateUI()
             
             if index and IslandsData[index] then
                 TeleportToPosition(IslandsData[index].Position)
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "✈️ Teleported",
                     Content = "To " .. IslandsData[index].Name,
                     Duration = 2
@@ -2773,7 +2773,7 @@ local function CreateUI()
             end
             
             PlayerDrop:Refresh(Players_List)
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Players Loaded",
                 Content = string.format("Found %d players", #Players_List),
                 Duration = 2
@@ -2791,7 +2791,7 @@ local function CreateUI()
                 local hrp = player.Character:FindFirstChild("HumanoidRootPart")
                 if hrp then
                     HumanoidRootPart.CFrame = hrp.CFrame * CFrame.new(0, 3, 0)
-                    Rayfield:Notify({
+                    Kay:Notify({
                         Title = "✈️ Teleported",
                         Content = "To " .. selected,
                         Duration = 2
@@ -2826,7 +2826,7 @@ local function CreateUI()
             end
             
             EventDrop:Refresh(options)
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Events Loaded",
                 Content = string.format("Found %d events", #Events),
                 Duration = 2
@@ -2842,7 +2842,7 @@ local function CreateUI()
             
             if index and Events[index] then
                 TeleportToPosition(Events[index].Position)
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "Teleported",
                     Content = "To event",
                     Duration = 2
@@ -2858,7 +2858,7 @@ local function CreateUI()
         Callback = function()
             Config.SavedPosition = HumanoidRootPart.CFrame
             SaveConfig()
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Saved",
                 Content = "Position saved to disk!",
                 Duration = 2
@@ -2871,13 +2871,13 @@ local function CreateUI()
         Callback = function()
             if Config.SavedPosition then
                 HumanoidRootPart.CFrame = Config.SavedPosition
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "Teleported",
                     Content = "To saved position",
                     Duration = 2
                 })
             else
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "Error",
                     Content = "No saved position found",
                     Duration = 2
@@ -2891,7 +2891,7 @@ local function CreateUI()
         Callback = function()
             if Config.CheckpointPosition then
                 HumanoidRootPart.CFrame = Config.CheckpointPosition
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "✈️ Teleported",
                     Content = "Back to checkpoint",
                     Duration = 2
@@ -2909,7 +2909,7 @@ local function CreateUI()
                 Config.LockCFrame = HumanoidRootPart.CFrame
                 LockPosition()
             end
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Lock Position",
                 Content = Value and "Position Locked!" or "Position Unlocked!",
                 Duration = 2
@@ -2974,7 +2974,7 @@ local function CreateUI()
                     pcall(function()
                         if Remotes.PurchaseWeather then
                             Remotes.PurchaseWeather:InvokeServer(weather)
-                            Rayfield:Notify({
+                            Kay:Notify({
                                 Title = "Weather Purchased",
                                 Content = "Bought: " .. weather,
                                 Duration = 2
@@ -2994,7 +2994,7 @@ local function CreateUI()
             Config.AutoBuyWeather = Value
             if Value then
                 AutoBuyWeather()
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "Auto Buy Weather",
                     Content = "Will keep buying selected weathers!",
                     Duration = 3
@@ -3073,7 +3073,7 @@ local function CreateUI()
             Callback = function(val)
                 if val then
                     if quest.Name == "Element" and getQuestProgress("Deep Sea") < 100 then
-                        Rayfield:Notify({
+                        Kay:Notify({
                             Title = "Warning",
                             Content = "Need Ghostfinn 100% first!",
                             Duration = 3
@@ -3096,7 +3096,7 @@ local function CreateUI()
                     
                     SendQuestNotification(quest.Display, sel or "Auto", QuestState.LastProgress, "START")
                     
-                    Rayfield:Notify({
+                    Kay:Notify({
                         Title = "Quest Started",
                         Content = quest.Display .. " active!",
                         Duration = 3
@@ -3113,7 +3113,7 @@ local function CreateUI()
             Callback = function()
                 local all = getAllTasks(quest.Name)
                 if #all == 0 then
-                    Rayfield:Notify({
+                    Kay:Notify({
                         Title = "No Tasks Found",
                         Content = "Quest not available",
                         Duration = 2
@@ -3128,7 +3128,7 @@ local function CreateUI()
                 end
                 msg = msg .. string.format("\nTOTAL: %.1f%%", progress)
                 
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = quest.Display,
                     Content = msg,
                     Duration = 6
@@ -3168,7 +3168,7 @@ local function CreateUI()
         Callback = function(Text)
             TelegramConfig.ChatID = Text
             SaveConfig()
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Chat ID Saved",
                 Content = "Telegram configured!",
                 Duration = 2
@@ -3192,7 +3192,7 @@ local function CreateUI()
             Callback = function(val)
                 if val then
                     if CountSelected() + 1 > TelegramConfig.MaxSelection then
-                        Rayfield:Notify({
+                        Kay:Notify({
                             Title = "Max Selection",
                             Content = "Maximum 3 rarities allowed!",
                             Duration = 2
@@ -3216,7 +3216,7 @@ local function CreateUI()
         Name = "Test Random SECRET",
         Callback = function()
             if TelegramConfig.ChatID == "" then
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "Error",
                     Content = "Enter Chat ID first!",
                     Duration = 2
@@ -3233,7 +3233,7 @@ local function CreateUI()
             end
             
             if #secretItems == 0 then
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "No Data",
                     Content = "No SECRET items in database",
                     Duration = 2
@@ -3248,7 +3248,7 @@ local function CreateUI()
             local msg = BuildTelegramMessage(chosen.Info, chosen.Id, "SECRET", weight, invCount)
             SendTelegram(msg)
             
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Test Sent",
                 Content = "SECRET fish notification sent!",
                 Duration = 2
@@ -3260,7 +3260,7 @@ local function CreateUI()
         Name = "Test Random LEGENDARY",
         Callback = function()
             if TelegramConfig.ChatID == "" then
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "Error",
                     Content = "Enter Chat ID first!",
                     Duration = 2
@@ -3277,7 +3277,7 @@ local function CreateUI()
             end
             
             if #legendaryItems == 0 then
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "No Data",
                     Content = "No LEGENDARY items",
                     Duration = 2
@@ -3292,7 +3292,7 @@ local function CreateUI()
             local msg = BuildTelegramMessage(chosen.Info, chosen.Id, "LEGENDARY", weight, invCount)
             SendTelegram(msg)
             
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Test Sent",
                 Content = "LEGENDARY fish notification sent!",
                 Duration = 2
@@ -3304,7 +3304,7 @@ local function CreateUI()
         Name = "Test Random MYTHIC",
         Callback = function()
             if TelegramConfig.ChatID == "" then
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "Error",
                     Content = "Enter Chat ID first!",
                     Duration = 2
@@ -3322,7 +3322,7 @@ local function CreateUI()
             end
             
             if #mythicItems == 0 then
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "No Data",
                     Content = "No MYTHIC items",
                     Duration = 2
@@ -3337,7 +3337,7 @@ local function CreateUI()
             local msg = BuildTelegramMessage(chosen.Info, chosen.Id, "MYTHIC", weight, invCount)
             SendTelegram(msg)
             
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Test Sent",
                 Content = "MYTHIC fish notification sent!",
                 Duration = 2
@@ -3389,7 +3389,7 @@ local function CreateUI()
                 if Humanoid then
                     Humanoid.WalkSpeed = speed
                     Config.WalkSpeed = speed
-                    Rayfield:Notify({
+                    Kay:Notify({
                         Title = "Speed Set",
                         Content = "Speed: " .. speed,
                         Duration = 2
@@ -3407,7 +3407,7 @@ local function CreateUI()
                 Humanoid.JumpPower = 50
                 Config.WalkSpeed = 16
                 Config.JumpPower = 50
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "Reset",
                     Content = "Speed back to normal",
                     Duration = 2
@@ -3444,7 +3444,7 @@ local function CreateUI()
                     Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
                 end
             end)
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Infinite Jump",
                 Content = "Enabled!",
                 Duration = 2
@@ -3486,7 +3486,7 @@ local function CreateUI()
                     end)
                 end
             end
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "ESP Enabled",
                 Content = "All players highlighted",
                 Duration = 2
@@ -3506,7 +3506,7 @@ local function CreateUI()
                     end
                 end
             end
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "ESP Disabled",
                 Content = "Highlights removed",
                 Duration = 2
@@ -3524,7 +3524,7 @@ local function CreateUI()
             Lighting.Brightness = Config.Brightness
             Lighting.ClockTime = Config.TimeOfDay
             ApplyPermanentLighting()
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Fullbright",
                 Content = "Enabled permanent lighting!",
                 Duration = 2
@@ -3536,7 +3536,7 @@ local function CreateUI()
         Name = "Remove Fog",
         Callback = function()
             RemoveFog()
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Fog Removed",
                 Content = "Fog permanently disabled!",
                 Duration = 2
@@ -3548,7 +3548,7 @@ local function CreateUI()
         Name = "Performance Mode",
         Callback = function()
             PerformanceMode()
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Performance Mode",
                 Content = "Ultra performance activated!",
                 Duration = 2
@@ -3561,7 +3561,7 @@ local function CreateUI()
         Callback = function()
             PerformanceModeActive = false
             settings().Rendering.QualityLevel = Enum.QualityLevel.Automatic
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Quality Restored",
                 Content = "Performance mode disabled",
                 Duration = 2
@@ -3575,14 +3575,14 @@ local function CreateUI()
         Callback = function(Value)
             if Value then
                 HDGraphicMode()
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "HD Graphics",
                     Content = "High quality graphics enabled!",
                     Duration = 2
                 })
             else
                 DisableHDGraphicMode()
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "HD Disabled",
                     Content = "Graphics quality restored to normal",
                     Duration = 2
@@ -3595,7 +3595,7 @@ local function CreateUI()
         Name = "Remove Particles",
         Callback = function()
             RemoveParticles()
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Particles Removed",
                 Content = "All visual effects cleared!",
                 Duration = 2
@@ -3607,7 +3607,7 @@ local function CreateUI()
         Name = "Remove Seaweed",
         Callback = function()
             RemoveSeaweed()
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Seaweed Removed",
                 Content = "All plants and seaweed cleared!",
                 Duration = 2
@@ -3619,7 +3619,7 @@ local function CreateUI()
         Name = "Optimize Water",
         Callback = function()
             OptimizeWater()
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Water Optimized",
                 Content = "Water effects minimized!",
                 Duration = 2
@@ -3631,7 +3631,7 @@ local function CreateUI()
         Name = "8-Bit Mode",
         Callback = function()
             Enable8Bit()
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "8-Bit Mode",
                 Content = "Super smooth rendering enabled!",
                 Duration = 2
@@ -3684,7 +3684,7 @@ local function CreateUI()
         Name = "Save Configuration",
         Callback = function()
             local success = SaveConfig()
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = success and "Config Saved" or "Save Failed",
                 Content = success and "All settings saved to disk!" or "Failed to save configuration",
                 Duration = 3
@@ -3696,7 +3696,7 @@ local function CreateUI()
         Name = "Load Configuration",
         Callback = function()
             local success = LoadConfig()
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = success and "Config Loaded" or "Load Failed",
                 Content = success and "Settings restored from disk!" or "No saved configuration found",
                 Duration = 3
@@ -3747,7 +3747,7 @@ local function CreateUI()
             Lighting.Brightness = Config.Brightness
             Lighting.ClockTime = Config.TimeOfDay
             
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Config Reset",
                 Content = "All settings reset to defaults!",
                 Duration = 3
@@ -3764,7 +3764,7 @@ local function CreateUI()
             Config.AutoRejoin = Value
             if Value then
                 SetupAutoRejoin()
-                Rayfield:Notify({
+                Kay:Notify({
                     Title = "Auto Rejoin",
                     Content = "System enabled - Will auto rejoin on disconnect",
                     Duration = 3
@@ -3777,7 +3777,7 @@ local function CreateUI()
         Name = "Save Rejoin Data Now",
         Callback = function()
             SaveRejoinData()
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Rejoin Data Saved",
                 Content = "Position and settings saved for rejoin!",
                 Duration = 2
@@ -3819,7 +3819,7 @@ local function CreateUI()
         Name = "Health Check Remotes",
         Callback = function()
             local healthy = HealthCheckRemotes()
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = healthy and "Remotes Healthy" or "Remotes Issue",
                 Content = healthy and "All remotes found!" or "Some remotes missing, check console",
                 Duration = 5
@@ -3840,7 +3840,7 @@ local function CreateUI()
                     print(key .. ":", value)
                 end
             end
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "State Printed",
                 Content = "Check console for runtime state",
                 Duration = 3
@@ -3854,7 +3854,7 @@ local function CreateUI()
             Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
             HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
             Humanoid = Character:WaitForChild("Humanoid")
-            Rayfield:Notify({
+            Kay:Notify({
                 Title = "Character Reconnected",
                 Content = "Character references updated!",
                 Duration = 2
@@ -3872,7 +3872,7 @@ local function CreateUI()
     Tab7:CreateButton({
         Name = "Close UI",
         Callback = function()
-            Rayfield:Destroy()
+            Kay:Destroy()
         end
     })
     
@@ -4003,7 +4003,7 @@ local function Initialize()
     print("Developer: KAY")
     print("All systems initialized successfully!")
     
-    Rayfield:Notify({
+    Kay:Notify({
         Title = "SYNCROPS FISH IT LOADED",
         Content = "Version PREMIUM - All systems ready!",
         Duration = 5
