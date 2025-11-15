@@ -1,7 +1,13 @@
 --[[
 
 	Kay Interface Suite
-	by SYNCROPS
+	by Sirius
+
+	shlex  | Designing + Programming
+	iRay   | Programming
+	Max    | Programming
+	Damian | Programming
+
 ]]
 
 if debugX then
@@ -950,7 +956,7 @@ local function LoadConfiguration(Configuration)
 		else
 			warn("Kay | Unable to find '"..FlagName.. "' in the save file.")
 			print("The error above may not be an issue if new elements have been added or not been set values.")
-			--KayLibrary:Notify({Title = "Kay Flags", Content = "Kay was unable to find '"..FlagName.. "' in the save file. Check sirius.menu/discord for help.", Image = 3944688398})
+			--KayLibrary:Notify({Title = "Kay Flags", Content = "Kay was unable to find '"..FlagName.. "' in the save file. Check dm discord me for help.", Image = 3944688398})
 		end
 	end
 
