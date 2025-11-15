@@ -2,7 +2,7 @@
 ----- =======[ Load WindUI ]
 -------------------------------------------
 
-local Version = "1.0"
+local Version = "1.6.53"
 local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/download/" ..
 Version .. "/main.lua"))()
 
@@ -529,7 +529,7 @@ local function checkStatus()
     elseif response == "LATEST" then
         if not CheckData.notified then
             CheckData.notified = true
-            warn("[SYNCROPS] Status: Limited Edition Version.")
+            warn("[SYNCROPS] Status: Latest version")
         end
     else
         warn("[SYNCROPS] Status unknown:", response)
@@ -574,7 +574,7 @@ WindUI.TransparencyValue = 0.2
 local Window = WindUI:CreateWindow({
     Title = "SYNCROPS",
     Icon = "crown",
-    Author = "Version | Limited Edition",
+    Author = "Fishit | NewUi",
     Folder = "SYNCROPS",
     Size = UDim2.fromOffset(400, 200),
     Transparent = true,
@@ -701,7 +701,7 @@ Home:Paragraph({
 	Desc = [[
 Developer : Kay
 Game Script : Fish it
-Version : Limited Edition
+Version : Latest Update
 Framework : Wind UI
 ]]
 })
@@ -4121,10 +4121,10 @@ local resetPauseSlider = X5SpeedTab:Slider({
 })
 myConfig:Register("Instant_ResetPause", resetPauseSlider)
 
-X5SpeedTab:Section({ Title = "Blatant Settings", Opened = true })
+X5SpeedTab:Section({ Title = "AutoFish Ultra Speed Speed", Opened = true })
 
 local autoFishToggle = X5SpeedTab:Toggle({
-    Title = "Blatant Auto Fish",
+    Title = "Blatant AutoFish",
     Desc = "Still unstable and lots of bugs.",
     Value = false,
     Callback = startOrStopAutoFish
